@@ -24,7 +24,11 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|integer|exists:App\Models\User',
+            'name' => 'required|min:2',
+            'slug' => 'required|unique:App\Models\Post',
+            'image' => 'required|image',
+            'content' => 'required|string'
         ];
     }
 }
